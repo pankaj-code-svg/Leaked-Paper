@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trolled</title>
+  <style>
+    body {
+      font-family: 'Arial Black', Gadget, sans-serif;
+      background-color: #000;
+      color: #ff0000;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+
+    .emoji {
+      font-size: 100px;
+      margin: 30px 0;
+    }
+
+    .username {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .share-button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .share-button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>!!!!!!!!!!!Padh Liya Hota Madherchod!!!!!!!!!!!!</h1>
+
+  <div class="emoji">🖕</div>
+
+  <div class="username" id="username">Fuck u, Stranger</div>
+
+  <div class="comment" id="comment">Ab share kr MC bhot instructions follow kr liya</div>
+
+  <button class="share-button" onclick="shareThis()">Share this</button>
+  <div id="shareCount" class="comment">Shares: 0</div>
+
+  <script>
+  const name = localStorage.getItem("username") || "Stranger";
+  document.getElementById("username").innerText = `Fuck u, ${name}`;
+
+  let shareCount = localStorage.getItem("shareCount") || 0;
+  document.getElementById("shareCount").innerText = `Shares: ${shareCount}`;
+
+  function shareThis() {
+    const shareUrl = window.location.origin + window.location.pathname.replace("paper.html", "index.html");
+    const shareText = `😂 Get Trolled! ${shareUrl}`;
+
+    const increaseCount = () => {
+      shareCount++;
+      localStorage.setItem("shareCount", shareCount);
+      document.getElementById("shareCount").innerText = `Shares: ${shareCount}`;
+    };
+
+    if (navigator.share) {
+      navigator.share({
+        title: "LOL",
+        text: shareText,
+        url: shareUrl
+      }).then(increaseCount)
+        .catch(err => {
+          alert("Sharing canceled or failed.");
+          console.error("Error:", err);
+        });
+    } else {
+      navigator.clipboard.writeText(shareText).then(() => {
+        alert("Link copied to clipboard! Send it to your friends 😂");
+        increaseCount();
+      }).catch(err => {
+        alert("Copy failed.");
+        console.error("Clipboard error:", err);
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

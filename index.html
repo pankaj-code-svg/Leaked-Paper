@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chemistry Leaked Paper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #b22222;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      display: inline-block;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: left;
+      max-width: 400px;
+      width: 100%;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #b22222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    .instructions {
+      margin-top: 20px;
+      font-style: italic;
+      color: #555;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>*************Chemistry Leaked paper of all branch************</h1>
+
+  <form id="userForm">
+    <label for="name">Name*:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="branch">Branch*:</label>
+    <select id="branch" name="branch" required>
+      <option value="" disabled selected>Select your branch</option>
+      <option value="CSE">Information Technology</option>
+      <option value="CSE">Computer Science</option>
+      <option value="ECE">Electronics and Telecommunication</option>
+      <option value="ME">Mechanical</option>
+      <option value="CE">Civil</option>
+      <option value="EE">Electrical</option>
+      <!-- Add more branches as needed -->
+    </select>
+<label for="name">College 	Name*:</label>
+    <input type="text" id="name" name="name" required />
+
+
+    <button type="submit" id="viewButton" disabled>View the paper</button>
+  </form>
+
+  <div class="instructions">
+    <p><strong>Instructions:</strong></p>
+    <ul>
+      <li>Do not share this paper with anyone or any authority.</li>
+      <li>This content is confidential and meant only for your use.</li>
+      <li>Please respect the rules and do not misuse the paper.</li>
+      <li>Your name and branch are mandatory to access the paper.</li>
+    </ul>
+  </div>
+
+  <script>
+    const nameInput = document.getElementById('name');
+    const branchSelect = document.getElementById('branch');
+    const button = document.getElementById('viewButton');
+    const form = document.getElementById('userForm');
+
+    function validateForm() {
+      if(nameInput.value.trim() !== '' && branchSelect.value !== '') {
+        button.disabled = false;
+      } else {
+        button.disabled = true;
+      }
+    }
+
+    nameInput.addEventListener('input', validateForm);
+    branchSelect.addEventListener('change', validateForm);
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+    localStorage.setItem("username", name);
+    window.location.href = 'paper.html';
+    });
+  </script>
+
+</body>
+</html>
